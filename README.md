@@ -52,5 +52,26 @@ Instead of running multiple commands to serve client and server manually, you co
 
 You can configure the port on which the server runs by modifying the `apiPort` variable in `server/index.js`.
 
-Be Advised that if you change the port there, then in order for the front end client to communicate with the API provider,
-the port number variable `APIPort` in `src/scripts/index.js` has to be changed to the same value.
+Be Advised that if you change the port for the server, then in order for the front end client to communicate with the API provider,
+the port number variable `APIPort` in `src/scripts/utils.js` has to be changed to the same value.
+
+# Testing
+
+A suite of simple test cases have been written in `.test.js` file located in `src/___tests___` folder. 
+This project uses [Jest](https://jestjs.io/) to test the scripts
+
+# PWA-Ready!
+
+This app is PWA ready (sans few missing caveats namely a splash screen, HTTP2 Server, acceptable TTFB). In order to see it in action make sure that you have already ran the app once, then only run the client server `yarn run serveClient` and refresh the page to see it load without a backend!
+
+
+# WAIT! I thought this was for AEM ?!
+
+Obviously the main goal is to develop a component for AEM, The template, scripts and styles are written in such a way that the code can be directly `lifted and shifted` into AEM (with some caveats). 
+
+There are multiple ways to solve this problem for AEM. 
+* fetching jcr data using Sling Model OR Use-API and rendering the template using JSTL/HTL.
+* fetching jcr data using Sling Model OR Use-API and rendering the data as data-attribute in the page, then using JavaScript to read the attributes on page render and reconstruct the UI from template. This can be achieved by using a custom library like [Component Manager](https://github.com/ypk/AEMComponentManager)
+
+Depending on how AEM Development workflow is set up, LESS could used for styles, and vanilla JS could be used for JS;
+or we could take a different approach completely by using [UI.Frontend](https://github.com/adobe/aem-guides-wknd) module and transpile latest ES5/6/7 code and process SASS/SCSS to styles using Webpack.

@@ -9,8 +9,8 @@
     "dev": "npm-run-all --parallel nodemon serveClient",
     "nodemon": "nodemon server/index.js",
     "serveServer": "node server/index.js",
-    "serveClient": "yarn run webpack-dev-server",
-    "serve": "npm-run-all --parallel serveServer serveClient",
+    "serveClient": "yarn run webpack && webpack-dev-server",
+    "serve": "npm-run-all --parallel test serveServer serveClient",
     "test": "jest"
   },
   "dependencies": {
