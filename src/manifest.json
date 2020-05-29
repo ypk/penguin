@@ -1,0 +1,17 @@
+{
+  "name": "PNGN App",
+  "short_name": "PNGNApp",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f60",
+  "description": "Technical test for bertelsmann",
+  "orientation": "portrait-primary",
+  "theme_color": "#f60",
+  "icons": [
+    {
+      "src": "./dist/logo-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
+}

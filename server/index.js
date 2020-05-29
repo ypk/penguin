@@ -6,9 +6,31 @@ const path = require('path');
 const router = require('./routes');
 
 const app = express();
-const apiPort = 3000
+const apiPort = 3000;
 
-app.use(compression());
+const shouldCompress = (req, res) => {
+  if (req.headers['x-no-compression']) {
+    return false;
+  }
+  return compression.filter(req, res);
+};
+
+app.use(compression({
+  filter: shouldCompress,
+  threshold: 0
+}));
+
+let setCache = function (req, res, next) {
+    const period = 60 * 5;
+    if (req.method == 'GET') {
+      res.set('Cache-control', `public, max-age=${period}`)
+    } else {
+      res.set('Cache-control', `no-store, no-cache, max-age=0`)
+    }
+    next()
+}
+
+app.use(setCache);
 
 app.use(cors());
 

@@ -14,18 +14,30 @@ import "../styles/main.scss";
 
     const getError = (reason) => {
         collectionNode.classList.add("error");
-        return `<h2>Uh Oh!</h2>
+        return `
+        <header>
+            <h2>Uh Oh!</h2>
+        </header>
         <p>There seems to be a problem with ${reason}</p>
         <p>Please refresh the page and try again</p>`;    
     };
 
     const sanitizeData = (str) => {
+        if(typeof str === "undefined") str = "";
         let newString = new String(str);
         return newString.toString();
     };
 
+    const generateAltText = (name, author) => {
+        const title = typeof name === "undefined" ? "Unknown Title": sanitizeData(name);
+        const authorName = typeof author === "undefined" ? "Unknown Author" : sanitizeData(author);
+        return `${title} by ${authorName}`;
+    };
+
     const renderUI = () => {
+
         getData().then((data) => {
+
             if(Object.keys(data).length === 0) {
                 let errorNode = getError("data");
                 console.error(errorNode);
@@ -33,21 +45,32 @@ import "../styles/main.scss";
                 loaderNode.remove();
                 return;
             }
+
             collectionNode.classList.remove("error");
+
             data.forEach((item) => {
-                let { author, image, title, url } = item;         
+                let { author, image, title, url } = item;
+                
+                let altText = generateAltText(title, author);
+                let imageUrl = `${APIBaseUrl}/${image}`;
+                let productLink = sanitizeData(url);
+                let productTitle = sanitizeData(title);
+                let authorName = sanitizeData(author);
+
                 let product = `<div class="product">
-                    <a class="product__link" href="${sanitizeData(url)}">
-                        <img defer class="product__image" src="${APIBaseUrl}/${image}">
+                    <a class="product__link" href="${productLink}">
+                        <img rel="preload" defer class="product__image" alt="${altText}" src="${imageUrl}">
                         <div class="product__details">
-                            <p class="product__name">${sanitizeData(title)}</p>
-                            ${typeof author !== "undefined" ? `<p class="product__author">${sanitizeData(author)}</p>` : ''} 
+                            <p class="product__name">${productTitle}</p>
+                            ${authorName !== "" ? `<p class="product__author">${authorName}</p>` : ''} 
                         </div>
                     </a>
                 </div>`;
                 collectionNode.insertAdjacentHTML("beforeend", product);
             })
+
             loaderNode.remove();
+
         })
         .catch((error) => {
             console.error(error);
@@ -57,4 +80,17 @@ import "../styles/main.scss";
         });
     }
     renderUI();
+
+
+    const registerServiceWorker = () => { 
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register('./serviceWorker.js')
+                .then((registration) => console.info('ServiceWorker registration successful with scope:',  registration.scope))
+                .catch((error) => console.error('ServiceWorker registration failed:', error));
+        }
+    }
+
+    window.addEventListener('load', (e) => {
+        registerServiceWorker();
+    });
 }
