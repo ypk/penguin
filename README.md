@@ -1,6 +1,8 @@
 # PNGN
 Technical test for bertelsmann
 
+![Screenshot](https://raw.githubusercontent.com/ypk/penguin/master/screenshot.png?token=AA7BICWJIBS6KSN6DXLYRPS62FUXU)
+
 This repository contains two servers to serve up test content.
 
 A [Webpack](https://webpack.js.org/) based server which serves the front-end client (basically html, css, js based app) and;
