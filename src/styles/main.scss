@@ -1,7 +1,119 @@
 @import "~reset-scss/reset.scss";
 @import url('//fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('//fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap');
 
+$loader-background-color: #ededed;
+$black: #000000;
+$white: #ffffff;
+
+@keyframes shimmer {
+    0% {
+        background-position: -468px 0;
+    }
+
+    100% {
+        background-position: 468px 0; 
+    }
+}
 
 body {
     font-family: 'Oswald', sans-serif;
+
+    .container {
+        max-width: 1200px;
+        margin: 60px auto;
+
+        .top-sellers {
+            h1 {
+                margin-bottom: 32px;
+                border-bottom: 5px solid $black;
+                line-height: 4rem;
+                font-size: 2rem;
+            }
+        }
+
+        .collection {
+            display: grid;
+            grid: auto / repeat(6, 1fr);
+            grid-gap: 40px 20px;
+
+            .loader {
+                display: flex;
+                width: 100%;
+
+                .product {
+                    width: 172px;
+                    height: 100%;
+                    margin: auto 16px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+
+                    &__image {
+                        background: $loader-background-color;
+                        background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+                        display: block;
+                        min-height: 200px;
+                        width: 100%;
+                        animation: shimmer 8s ease infinite forwards;
+                    }
+                        
+                    &__name {
+                        background: $loader-background-color;
+                        background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+                        width: 100%;
+                        height: 20px;
+                        animation: shimmer 8s ease infinite forwards;
+                    }
+
+                    &__author {
+                        background: $loader-background-color;
+                        background-image: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+                        width: 100%;
+                        height: 20px;
+                        animation: shimmer 8s ease infinite forwards;
+                    }
+                }
+            }
+
+            .product {
+                &__link {
+                    color: $black;
+                    text-decoration: none;
+                }
+            
+                &__details {
+                    margin: 16px auto;
+                }
+
+                &__image {
+                    background-color: $loader-background-color;
+                    display: block;
+                    min-height: 100px;
+                    width: 100%;
+                }
+
+                &__name {
+                    font-weight: bold;
+                    line-height: 1.8rem;
+                }
+
+                &__name, &__author {
+                    font-family: 'Jost', sans-serif;
+                    font-size: 16px;
+                }
+
+                &__author {
+                    margin: 8px auto;
+                }
+            }
+        }
+    }
 }
+
+

@@ -27,7 +27,7 @@ Depending on what's installed, navigate to the root directory of the repository 
 
 ## Serve Instructions
 
-You need not build the app if you're serving locally as the serve commands automatically builds the app.
+You need not build the app if you're serving locally as the serve command automatically builds the app.
 
 Navigate to the root directory of the repository and try the following commands 
 
@@ -41,7 +41,7 @@ These commands will build and serve the apps on a stand alone server running on 
 
 ## One command to serve them all
 
-Instead of running the commands to serve client and server manually, you could run both concurrently using the following command
+Instead of running multiple commands to serve client and server manually, you could run both commands concurrently using the following command
 
 |  yarn        |   npm           |
 | ------------- |:-------------:|

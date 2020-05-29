@@ -9,7 +9,6 @@ const getData = () => {
     return readFile(dataLocation);
 };
 
-
 const getImage = (imagePath) => {
     const imageLocation = path.resolve(__dirname, `../static/img/${imagePath}`);
     return readFile(imageLocation);
