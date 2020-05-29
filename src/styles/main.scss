@@ -23,6 +23,15 @@ body {
         max-width: 1200px;
         margin: 60px auto;
 
+        @media screen and (max-width: 414px) {
+            max-width: 320px;
+            margin: auto 20px;
+        }
+
+        @media screen and  (max-width: 768px) {
+            max-width: 720px;
+        }
+
         .top-sellers {
             h1 {
                 margin-bottom: 32px;
@@ -34,7 +43,7 @@ body {
 
         .collection {
             display: grid;
-            grid: auto / repeat(6, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             grid-gap: 40px 20px;
 
             &.error {

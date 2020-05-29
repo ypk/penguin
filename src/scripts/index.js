@@ -17,7 +17,12 @@ import "../styles/main.scss";
         return `<h2>Uh Oh!</h2>
         <p>There seems to be a problem with ${reason}</p>
         <p>Please refresh the page and try again</p>`;    
-    }
+    };
+
+    const sanitizeData = (str) => {
+        let newString = new String(str);
+        return newString.toString();
+    };
 
     const renderUI = () => {
         getData().then((data) => {
@@ -32,11 +37,11 @@ import "../styles/main.scss";
             data.forEach((item) => {
                 let { author, image, title, url } = item;         
                 let product = `<div class="product">
-                    <a class="product__link" href="${url}">
+                    <a class="product__link" href="${sanitizeData(url)}">
                         <img defer class="product__image" src="${APIBaseUrl}/${image}">
                         <div class="product__details">
-                            <p class="product__name">${title}</p>
-                            ${typeof author !== "undefined" ? `<p class="product__author">${author}</p>` : ''} 
+                            <p class="product__name">${sanitizeData(title)}</p>
+                            ${typeof author !== "undefined" ? `<p class="product__author">${sanitizeData(author)}</p>` : ''} 
                         </div>
                     </a>
                 </div>`;
@@ -46,7 +51,7 @@ import "../styles/main.scss";
         })
         .catch((error) => {
             console.error(error);
-            const errorNode = getError("data");
+            const errorNode = getError("Internet");
             collectionNode.insertAdjacentHTML("beforeend", errorNode);
             loaderNode.remove();
         });
