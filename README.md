@@ -50,4 +50,7 @@ Instead of running multiple commands to serve client and server manually, you co
 
 # NOTE
 
-You can configure the port on which the server runs by modifying the `apiPort` variable in `server/index.js`. Be Advised that if you change the port here then in order for the front end client to communicate with the API provider, the port number variable `APIPort` in `src/scripts/index.js` has to be changed to the same value.
+You can configure the port on which the server runs by modifying the `apiPort` variable in `server/index.js`.
+
+Be Advised that if you change the port there, then in order for the front end client to communicate with the API provider,
+the port number variable `APIPort` in `src/scripts/index.js` has to be changed to the same value.
