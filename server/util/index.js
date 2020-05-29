@@ -2,7 +2,6 @@ const path = require('path');
 const fourOFivePage = '../../dist/405.html';
 const fourOFivePagePath = path.resolve(__dirname, fourOFivePage);
 
-
 const getRequestURL = (req) => req.protocol + "://" + req.get('host') + req.originalUrl;
 
 const serveInternalError = (req, res) => {

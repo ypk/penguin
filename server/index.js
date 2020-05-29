@@ -20,7 +20,7 @@ app.use(compression({
   threshold: 0
 }));
 
-let setCache = function (req, res, next) {
+const setCache = (req, res, next) => {
     const period = 60 * 5;
     if (req.method == 'GET') {
       res.set('Cache-control', `public, max-age=${period}`)
@@ -32,7 +32,14 @@ let setCache = function (req, res, next) {
 
 app.use(setCache);
 
+const setAccessControlHeaders = (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*')
+  next();
+}
+
 app.use(cors());
+
+app.use(setAccessControlHeaders);
 
 app.use(express.json());
 
