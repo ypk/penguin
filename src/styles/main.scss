@@ -37,6 +37,12 @@ body {
             grid: auto / repeat(6, 1fr);
             grid-gap: 40px 20px;
 
+            &.error {
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+            }
+
             .loader {
                 display: flex;
                 width: 100%;
