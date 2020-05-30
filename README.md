@@ -1,7 +1,7 @@
 # PNGN
 Technical test for bertelsmann
 
-![Screenshot](https://raw.githubusercontent.com/ypk/penguin/master/screenshot.png?token=AA7BICWJIBS6KSN6DXLYRPS62FUXU)
+![Screenshot](https://i.imgur.com/i1r6vWD.png)
 
 This repository contains two servers to serve up test content.
 
@@ -57,6 +57,14 @@ You can configure the port on which the server runs by modifying the `apiPort` v
 Be Advised that if you change the port for the server, then in order for the front end client to communicate with the API provider,
 the port number variable `APIPort` in `src/scripts/utils.js` has to be changed to the same value.
 
+# Usage
+
+Once the servers are up and running, the API server can be accessible via the url `http://localhost:3000/` (please change the port number in the URL if you have modified the default port).
+
+By default all routes on the server result in `405` except for the `/api` route which fetches the JSON and serves it. So, the URL to get the data would be `http://localhost:3000/api`
+
+On the front end, the web page can be accessible via  the url `http://localhost:8080/`
+
 # Testing
 
 A suite of simple test cases have been written in `.test.js` file located in `src/___tests___` folder. 
@@ -64,7 +72,7 @@ This project uses [Jest](https://jestjs.io/) to test the scripts
 
 # PWA-Ready!
 
-This app is PWA ready (sans few missing caveats namely a splash screen, HTTP2 Server, acceptable TTFB). In order to see it in action make sure that you have already ran the app once, then only run the client server `yarn run serveClient` and refresh the page to see it load without a backend!
+This app is PWA ready. In order to see it in action make sure that you have already ran the app once, then only run the client server `yarn run serveClient` and refresh the page to see it load without a backend!
 
 
 # WAIT! I thought this was for AEM ?!
