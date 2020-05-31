@@ -6,11 +6,13 @@
   "description": "Technical test for bertelsmann",
   "author": "Prasanna Kumar Yalala",
   "scripts": {
-    "dev": "npm-run-all --parallel nodemon serveClient",
-    "nodemon": "nodemon server/index.js",
+    "dev": "npm-run-all --parallel test dev:server dev:client",
+    "dev:server":"nodemon server/index.js", 
+    "dev:client": "npm-run-all --parallel watch:webpack serveClient",
+    "watch:webpack": "webpack --watch",
     "serveServer": "node server/index.js",
-    "serveClient": "yarn run webpack && webpack-dev-server",
-    "serve": "npm-run-all --parallel test serveServer serveClient",
+    "serveClient": "yarn run webpack-dev-server",
+    "serve": "npm-run-all --parallel serveServer serveClient",
     "test": "jest"
   },
   "dependencies": {
