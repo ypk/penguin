@@ -7,17 +7,16 @@ const getData = async () => {
     return apiData;
 };
 
-const getError = (node = undefined, reason) => {
-    if(node){
-        node.classList.add("error");
-    }
-
+const getError = (node, reason) => {
+    node.classList.add("error");
     return `
-    <header>
-        <h2>Uh Oh!</h2>
-    </header>
-    <p>There seems to be a problem with ${reason}</p>
-    <p>Please refresh the page and try again</p>`;    
+        <header class="error-header">
+            <h2>Uh Oh!</h2>
+        </header>
+        <article class="error-description">
+            <p>There seems to be a problem with ${reason}</p>
+            <p>Please refresh the page and try again</p>
+        </article>`;
 };
 
 const sanitizeData = (str) => {
