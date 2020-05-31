@@ -10,8 +10,10 @@
     "dev:server":"nodemon server/index.js", 
     "dev:client": "npm-run-all --parallel watch:webpack serveClient",
     "watch:webpack": "webpack --watch",
+    "serve:webpack": "yarn webpack-dev-server",
+    "buildClient": "yarn webpack",
     "serveServer": "node server/index.js",
-    "serveClient": "yarn run webpack-dev-server",
+    "serveClient": "npm-run-all --parallel serve:webpack buildClient",
     "serve": "npm-run-all --parallel serveServer serveClient",
     "test": "jest"
   },
